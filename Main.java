@@ -32,15 +32,6 @@ public class Main {
         Laptop search = new Laptop();
         search.inputSearch(laptopsSet);
 
-        // Laptop laptop = new Laptop();
-        // Scanner in = new Scanner(System.in, "ibm866");
-        // String system = in.next().toString();
-        // laptop.setOperatingSystem(system);
-        // System.out.println(laptop1.equalsSystem(laptop));
-        // System.out.println(laptop);
-        // in.close();
-
-        
     }
 }
 
