@@ -1,4 +1,8 @@
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Map.Entry;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -13,9 +17,6 @@ public class Main {
         Laptop laptop9 = new Laptop(16, 1000, "RedOS", "Белый", 15);
         Laptop laptop10 = new Laptop(16, 1500, "Linux", "Чёрный", 17);
 
-        Laptop ram = new Laptop();
-        ram.setRam(4);
-
         HashSet<Laptop> laptopsSet = new HashSet<>();
         laptopsSet.add(laptop1);
         laptopsSet.add(laptop2);
@@ -28,10 +29,14 @@ public class Main {
         laptopsSet.add(laptop9);
         laptopsSet.add(laptop10);
 
-        System.out.println(laptopsSet);
-        System.out.println(laptop3.equals(ram));
-        
-
+        Laptop search = new Laptop();
+        search.inputSearch(laptopsSet);
         
     }
 }
+
+        
+        
+
+        
+

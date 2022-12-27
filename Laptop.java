@@ -1,3 +1,7 @@
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
+
 /*
  *  Подумать над структурой класса Ноутбук для магазина техники - выделить поля и методы. Реализовать в java.
     Создать множество ноутбуков.
@@ -86,4 +90,22 @@ public class Laptop {
         var t = (Laptop) o;
         return ram == t.ram; 
     }
+
+    public void inputSearch (HashSet<Laptop> laptopsSet) {
+        Laptop ram = new Laptop();
+        System.out.println("Введите объём памяти (2, 4, 8 или 16 гигабайт) для поиска: ");
+        Scanner in = new Scanner(System.in);
+        ram.setRam(in.nextInt());
+        in.close();
+
+        Iterator<Laptop> laptops = laptopsSet.iterator();
+        while (laptops.hasNext()) {
+            Laptop l = laptops.next();
+            if (l.equals(ram)) {
+                System.out.println(l);
+            }
+                }
+    }
+
+ 
 }
