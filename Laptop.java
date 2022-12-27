@@ -21,7 +21,6 @@ public class Laptop {
     private String operatingSystem;
     private String color;
     private int screenSize;
-    private boolean sold;
 
     public Laptop(int ram, int harDriveCapacity, String operatingSystem, String color, int screenSize){
         this.ram = ram;
@@ -106,7 +105,7 @@ public class Laptop {
         return color == t.color; 
     }
 
-    public boolean screenSize(Object o) {
+    public boolean equalsScreenSize(Object o) {
         var t = (Laptop) o;
         return screenSize == t.screenSize; 
     }
@@ -116,25 +115,62 @@ public class Laptop {
 
     public void inputSearch (HashSet<Laptop> laptopsSet) {
         Iterator<Laptop> laptops = laptopsSet.iterator();
-        Laptop ram = new Laptop();
-        System.out.println("Введите для поиска:\n 1 - Объём памяти \n 2 - Размер жёсткого диска \n 3 - Операционная система \n 4 - Цвет \n 5 - Размер экрана");
-        Scanner in = new Scanner(System.in);
+        Laptop laptop = new Laptop();
+        System.out.println("Выберите критерий для поиска:\n 1 - Объём памяти \n 2 - Размер жёсткого диска \n 3 - Операционная система \n 4 - Цвет \n 5 - Размер экрана");
+        Scanner in = new Scanner(System.in, "ibm866");
         int i = in.nextInt();
         if (i == 1){
             System.out.println("Введите объём памяти (2, 4, 8 или 16 гигабайт) для поиска: ");
-            Scanner r = new Scanner(System.in);
-            ram.setRam(in.nextInt());
-            r.close();
+            laptop.setRam(in.nextInt());
             while (laptops.hasNext()) {
                 Laptop l = laptops.next();
-                if (l.equals(ram)) {
+                if (l.equals(laptop)) {
                     System.out.println(l);
                 }
             }
-
         }
-        
+        if (i == 2) {
+            System.out.println("Введите размер жёсткого диска (250, 320, 500, 1000 или 1500 гигабайт) для поиска: ");
+            laptop.setHardDrive(in.nextInt());
+            while (laptops.hasNext()) {
+                Laptop l = laptops.next();
+                if (l.equalsDrive(laptop)) {
+                    System.out.println(l);
+                }
+            }
+        }
+        if (i == 3) {
+            System.out.println("Введите операционную систему (Windows, MacOs, Linux, Astra Linux, RedOS) для поиска: ");
+            laptop.setOperatingSystem(in.next());
+            // laptop.setOperatingSystem("Windows");
+            while (laptops.hasNext()) {
+                Laptop l = laptops.next();
+                if (l.equalsSystem(laptop)) {
+                    System.out.println(l);
+                }
+            }
+        }
+        if (i == 4) {
+            System.out.println("Введите цвет (Чёрный, Серый, Белый) для поиска: ");
+            // laptop.setColor(in.next());
+            laptop.setColor("Чёрный");
+            while (laptops.hasNext()) {
+                Laptop l = laptops.next();
+                if (l.equalsColor(laptop)) {
+                    System.out.println(l);
+                }
+            }
+        }
+        if (i == 5) {
+            System.out.println("Введите размер экрана (15 или 17 дюймов) для поиска: ");
+            laptop.setScreenSize(in.nextInt());
+            while (laptops.hasNext()) {
+                Laptop l = laptops.next();
+                if (l.equalsScreenSize(laptop)) {
+                    System.out.println(l);
+                }
+            }
+        }
+        in.close(); 
     }
-
- 
 }
