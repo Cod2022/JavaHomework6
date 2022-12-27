@@ -31,6 +31,11 @@ public class Main {
 
         Laptop search = new Laptop();
         search.inputSearch(laptopsSet);
+
+        // Laptop laptop = new Laptop();
+        // laptop.setOperatingSystem("Windows");
+        // System.out.println(laptop1.equalsSystem(laptop));
+
         
     }
 }

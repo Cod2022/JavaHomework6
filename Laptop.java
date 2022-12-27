@@ -49,7 +49,7 @@ public class Laptop {
     }
     
 
-    public void sethardDrive (int harDriveCapacity) {
+    public void setHardDrive (int harDriveCapacity) {
         this.harDriveCapacity = harDriveCapacity;
     }
 
@@ -91,20 +91,49 @@ public class Laptop {
         return ram == t.ram; 
     }
 
-    public void inputSearch (HashSet<Laptop> laptopsSet) {
-        Laptop ram = new Laptop();
-        System.out.println("Введите объём памяти (2, 4, 8 или 16 гигабайт) для поиска: ");
-        Scanner in = new Scanner(System.in);
-        ram.setRam(in.nextInt());
-        in.close();
+    public boolean equalsDrive(Object o) {
+        var t = (Laptop) o;
+        return harDriveCapacity == t.harDriveCapacity; 
+    }
 
+    public boolean equalsSystem(Object o) {
+        var t = (Laptop) o;
+        return operatingSystem == t.operatingSystem; 
+    }
+
+    public boolean equalsColor(Object o) {
+        var t = (Laptop) o;
+        return color == t.color; 
+    }
+
+    public boolean screenSize(Object o) {
+        var t = (Laptop) o;
+        return screenSize == t.screenSize; 
+    }
+
+
+
+
+    public void inputSearch (HashSet<Laptop> laptopsSet) {
         Iterator<Laptop> laptops = laptopsSet.iterator();
-        while (laptops.hasNext()) {
-            Laptop l = laptops.next();
-            if (l.equals(ram)) {
-                System.out.println(l);
-            }
+        Laptop ram = new Laptop();
+        System.out.println("Введите для поиска:\n 1 - Объём памяти \n 2 - Размер жёсткого диска \n 3 - Операционная система \n 4 - Цвет \n 5 - Размер экрана");
+        Scanner in = new Scanner(System.in);
+        int i = in.nextInt();
+        if (i == 1){
+            System.out.println("Введите объём памяти (2, 4, 8 или 16 гигабайт) для поиска: ");
+            Scanner r = new Scanner(System.in);
+            ram.setRam(in.nextInt());
+            r.close();
+            while (laptops.hasNext()) {
+                Laptop l = laptops.next();
+                if (l.equals(ram)) {
+                    System.out.println(l);
                 }
+            }
+
+        }
+        
     }
 
  
